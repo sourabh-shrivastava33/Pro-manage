@@ -1,0 +1,42 @@
+import styled from "styled-components";
+export const SwinLaneWrapper = styled.div`
+  width: 400px;
+  height: 97%;
+  border-radius: 15px;
+  background-color: rgb(238, 242, 245);
+  padding: 1rem;
+  flex-shrink: 0;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 15px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(156, 183, 197);
+    border-radius: 15px;
+  }
+  .swinlane-head {
+    display: flex;
+    background-color: inherit;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      font-weight: 500;
+    }
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .add,
+  .collapse-all {
+    font-size: 1.5rem;
+    color: #858585;
+    cursor: pointer;
+    &:hover {
+      color: black;
+    }
+  }
+`;

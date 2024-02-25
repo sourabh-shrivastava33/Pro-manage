@@ -1,0 +1,21 @@
+import styled from "styled-components";
+export const LoaderWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .loader {
+    width: 5rem;
+    height: 5rem;
+    border: 5px solid rgb(238, 242, 245);
+    border-top-color: rgb(24, 176, 255);
+    border-radius: 50%;
+    animation: spinner 0.6s linear infinite;
+  }
+`;
