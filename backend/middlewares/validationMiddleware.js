@@ -18,7 +18,9 @@ const withValidationErrors = (validateValues) => {
           .array()
           .map((error) => error.msg)
           .join(",");
-        console.log(errors.split(",").join(",").startsWith("no task"));
+        // console.log(errors.split(",").join(",").startsWith("no task"));
+        console.log(result);
+
         if (
           errors.split(",").join(",").startsWith("no task") ||
           errors
