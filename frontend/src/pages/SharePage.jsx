@@ -59,46 +59,6 @@ const SharePage = () => {
                 changeCheckList={() => toast.error("Public Page,read only")}
               />
             ))}
-            {data.task.checklist.map((checklist) => (
-              <ChecklistTaskBox
-                checklist={checklist}
-                key={checklist._id}
-                // disabled={true}
-                changeCheckList={() => toast.error("Public Page,read only")}
-              />
-            ))}
-            {data.task.checklist.map((checklist) => (
-              <ChecklistTaskBox
-                checklist={checklist}
-                key={checklist._id}
-                // disabled={true}
-                changeCheckList={() => toast.error("Public Page,read only")}
-              />
-            ))}
-            {data.task.checklist.map((checklist) => (
-              <ChecklistTaskBox
-                checklist={checklist}
-                key={checklist._id}
-                // disabled={true}
-                changeCheckList={() => toast.error("Public Page,read only")}
-              />
-            ))}
-            {data.task.checklist.map((checklist) => (
-              <ChecklistTaskBox
-                checklist={checklist}
-                key={checklist._id}
-                // disabled={true}
-                changeCheckList={() => toast.error("Public Page,read only")}
-              />
-            ))}
-            {data.task.checklist.map((checklist) => (
-              <ChecklistTaskBox
-                checklist={checklist}
-                key={checklist._id}
-                // disabled={true}
-                changeCheckList={() => toast.error("Public Page,read only")}
-              />
-            ))}
           </div>
         </div>
         {data.task["due date"] && (
