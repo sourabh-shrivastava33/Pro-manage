@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SharePageWrapper = styled.section`
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   .header {
     height: 80px;
     display: flex;
@@ -17,12 +17,12 @@ export const SharePageWrapper = styled.section`
   .task-container {
     width: 40%;
     margin: 0 auto;
-    border: 1px solid rgb(237, 245, 254);
+    border: 2px solid rgb(237, 245, 254);
     border-radius: 15px;
     padding: 3rem 2rem;
   }
   .checklist-container {
-    max-height: 500px;
+    max-height: 450px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
       width: 12px;
@@ -36,6 +36,7 @@ export const SharePageWrapper = styled.section`
   .checklist-detail {
     font-weight: 600;
     font-size: 1rem;
+    margin-bottom: 1rem;
   }
 
   .due-date-container {
@@ -44,21 +45,33 @@ export const SharePageWrapper = styled.section`
     align-items: center;
     gap: 1rem;
     .text {
-      font-weight: 700;
+      font-weight: 500;
     }
   }
   @media (max-width: 640px) {
+    .header {
+      font-size: 1.4rem;
+      padding: 0 2rem;
+    }
+    .title {
+      font-size: 1.5rem;
+      margin: 0.6rem 0;
+    }
+    .checklist-detail {
+      font-size: 0.8rem;
+    }
+
     .task-container {
       width: 90%;
       margin: 0 auto;
-      padding: 3rem 0.5rem;
-      max-height: 82%;
+      padding: 1rem 0 1rem 1rem;
+      max-height: 95%;
     }
     .task-boxes {
       max-width: 420px;
     }
     .checklist-container {
-      max-height: 400px;
+      max-height: 380px;
     }
   }
 `;

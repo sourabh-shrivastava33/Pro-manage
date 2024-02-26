@@ -9,6 +9,7 @@ import { completedTask } from "../utils/calculate";
 import ChecklistTaskBox from "../components/ChecklistTaskBox";
 import DateTag from "../components/DateTag";
 import { SharePageWrapper } from "../assets/styled-components/SharePageWrapper";
+import toast from "react-hot-toast";
 const SharePage = () => {
   const { taskId } = useParams();
   const { data, error, isLoading } = useGetTaskQuery(taskId);
@@ -54,7 +55,48 @@ const SharePage = () => {
               <ChecklistTaskBox
                 checklist={checklist}
                 key={checklist._id}
-                disabled={true}
+                // disabled={true}
+                changeCheckList={() => toast.error("Public Page,read only")}
+              />
+            ))}
+            {data.task.checklist.map((checklist) => (
+              <ChecklistTaskBox
+                checklist={checklist}
+                key={checklist._id}
+                // disabled={true}
+                changeCheckList={() => toast.error("Public Page,read only")}
+              />
+            ))}
+            {data.task.checklist.map((checklist) => (
+              <ChecklistTaskBox
+                checklist={checklist}
+                key={checklist._id}
+                // disabled={true}
+                changeCheckList={() => toast.error("Public Page,read only")}
+              />
+            ))}
+            {data.task.checklist.map((checklist) => (
+              <ChecklistTaskBox
+                checklist={checklist}
+                key={checklist._id}
+                // disabled={true}
+                changeCheckList={() => toast.error("Public Page,read only")}
+              />
+            ))}
+            {data.task.checklist.map((checklist) => (
+              <ChecklistTaskBox
+                checklist={checklist}
+                key={checklist._id}
+                // disabled={true}
+                changeCheckList={() => toast.error("Public Page,read only")}
+              />
+            ))}
+            {data.task.checklist.map((checklist) => (
+              <ChecklistTaskBox
+                checklist={checklist}
+                key={checklist._id}
+                // disabled={true}
+                changeCheckList={() => toast.error("Public Page,read only")}
               />
             ))}
           </div>

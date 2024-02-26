@@ -9,7 +9,7 @@ const taskApiSlice = apiSlice.injectEndpoints({
         params: queryParams,
       }),
       providesTags: ["Task"],
-      keepUnusedDataFor: 5,
+      keepUnusedDataFor: 10,
     }),
     createTask: builder.mutation({
       query: (newTask) => ({
@@ -49,14 +49,13 @@ const taskApiSlice = apiSlice.injectEndpoints({
       }),
 
       providesTags: ["Task"],
-      keepUnusedDataFor: 5,
     }),
     getAnalytics: builder.query({
       query: () => ({
         url: `${TASK_URL}/analytics`,
       }),
       providesTags: ["Task"],
-      keepUnusedDataFor: 5,
+      keepUnusedDataFor: 10,
     }),
   }),
 });

@@ -13,7 +13,7 @@ const ChecklistTaskBox = ({
     <ChecklistTaskBoxWrapper>
       <input
         type="checkbox"
-        defaultChecked={checklist.done}
+        checked={checklist.done}
         className="checkbox"
         onChange={(e) => changeCheckList(checklist._id, e)}
         disabled={disabled}

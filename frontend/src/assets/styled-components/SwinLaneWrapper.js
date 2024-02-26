@@ -8,12 +8,14 @@ export const SwinLaneWrapper = styled.div`
   flex-shrink: 0;
   overflow-y: scroll;
   &::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
     border-radius: 15px;
+    cursor: pointer;
   }
   &::-webkit-scrollbar-thumb {
     background-color: rgb(156, 183, 197);
     border-radius: 15px;
+    cursor: pointer;
   }
   .swinlane-head {
     display: flex;

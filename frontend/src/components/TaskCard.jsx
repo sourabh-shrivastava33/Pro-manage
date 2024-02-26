@@ -58,19 +58,20 @@ const TaskCard = ({
     }
   };
 
-  const handleDoneChange = async (checklistId, e) => {
-    const taskId = ele.id;
-    const checkListStatus = { done: e.target.checked };
-    try {
-      await editChecklistByTaskAndChecklistId({
-        taskId,
-        checkListStatus,
-        checklistId,
-      }).unwrap();
-      toast.success("Task updated");
-    } catch (error) {
-      toast.error(error?.data?.message);
-    }
+  const handleDoneChange = () => {
+    toast.error("Make changes from Edit Modal");
+    // const taskId = ele.id;
+    // const checkListStatus = { done: e.target.checked };
+    // try {
+    //   await editChecklistByTaskAndChecklistId({
+    //     taskId,
+    //     checkListStatus,
+    //     checklistId,
+    //   }).unwrap();
+    //   toast.success("Task updated");
+    // } catch (error) {
+    //   toast.error(error?.data?.message);
+    // }
   };
   const returnShareLink = (id) => {
     return `${window.location.href.split("/home")[0]}/share/${id}`;

@@ -8,7 +8,7 @@ const App = () => {
         toastOptions={{
           className: "",
           style: {
-            width: "300px",
+            width: "auto",
             border: "1px solid #17a2b8",
             padding: "16px",
             color: "rgb(0,0,0)",
@@ -19,6 +19,12 @@ const App = () => {
             style: {
               color: "rgb(207, 54, 54)",
               border: "1px solid rgb(207, 54, 54)",
+            },
+          },
+          success: {
+            style: {
+              color: "rgb(99, 192, 91)",
+              border: "1px solid rgb(99, 192, 91)",
             },
           },
         }}

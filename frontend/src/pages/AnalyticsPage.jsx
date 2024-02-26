@@ -1,27 +1,10 @@
 import React from "react";
-import styled from "styled-components";
-const AnalysticsPageWrapper = styled.div`
-  width: 100vw;
-  .head,
-  .content {
-    margin: 0 auto;
-    width: 96%;
-    display: flex;
-  }
-  .content {
-    gap: 2rem;
-  }
-  .head {
-    font-size: 2.1rem;
-    font-weight: 500;
-    margin: 2rem auto;
-  }
-`;
+
 import { useGetAnalyticsQuery } from "../slices/taskApiSlice";
 import Loader from "../components/Loader";
 
 import AnalyticsContainer from "../components/AnalyticsContainer";
-console.log(useGetAnalyticsQuery);
+import { AnalysticsPageWrapper } from "../assets/styled-components/AnalyticsPageWrapper";
 const AnalyticsPage = () => {
   const { data, isLoading } = useGetAnalyticsQuery();
 
