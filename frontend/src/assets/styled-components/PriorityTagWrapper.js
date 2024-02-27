@@ -13,9 +13,9 @@ export const PriorityTagWrapper = styled.p`
     border-radius: 50%;
     background-color: ${(props) =>
       props.$priority === "high"
-        ? "rgb(255, 36, 115)"
+        ? "var(--pink)"
         : props.$priority === "moderate"
-        ? "rgb(24, 176, 255)"
-        : "rgb(99, 192, 91)"};
+        ? "var(--blue)"
+        : "var(--green)"};
   }
 `;

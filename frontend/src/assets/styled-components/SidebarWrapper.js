@@ -25,7 +25,7 @@ export const SidebarWrapper = styled.div`
     border: none;
     cursor: pointer;
     span {
-      color: rgb(207, 54, 54);
+      color: var(--red);
       font-size: 1rem;
       font-weight: 600;
     }

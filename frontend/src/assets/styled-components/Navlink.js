@@ -23,7 +23,7 @@ export const Navlink = styled(NavLink)`
     }
 
     img {
-      color: black;
+      color: var(--black);
     }
   }
 `;

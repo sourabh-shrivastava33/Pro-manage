@@ -3,7 +3,7 @@ export const SwinLaneWrapper = styled.div`
   width: 400px;
   height: 97%;
   border-radius: 15px;
-  background-color: rgb(238, 242, 245);
+  background-color: var(--primary-300);
   padding: 1rem;
   flex-shrink: 0;
   overflow-y: scroll;
@@ -13,7 +13,7 @@ export const SwinLaneWrapper = styled.div`
     cursor: pointer;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgb(156, 183, 197);
+    background-color: var(--primary-400);
     border-radius: 15px;
     cursor: pointer;
   }

@@ -18,14 +18,19 @@ import AnalyticsPage from "./pages/AnalyticsPage.jsx";
 import SettingPage from "./pages/SettingPage.jsx";
 import PrivateRotue from "./components/PrivateRotue.jsx";
 import SharePage from "./pages/SharePage.jsx";
+import RouteError from "./components/RouteError.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route path="/" element={<App />} errorElement={<RouteError />}>
       <Route index={true} element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/share/:taskId" element={<SharePage />} />
       <Route path="" element={<PrivateRotue />}>
-        <Route path="/home" element={<HomeLayout />}>
+        <Route
+          path="/home"
+          element={<HomeLayout />}
+          errorElement={<RouteError />}
+        >
           <Route index={true} element={<DashboardPage />} />
           <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="settings" element={<SettingPage />} />

@@ -11,7 +11,6 @@ import {
   useEditTaskMutation,
 } from "../slices/taskApiSlice";
 const CreateEditTask = ({ onCloseModal, taskToEdit }) => {
-  console.log(taskToEdit);
   const [title, setTitle] = useState(() => {
     return taskToEdit ? taskToEdit.title : "";
   });

@@ -1,5 +1,4 @@
 import React from "react";
-import codesandboxIcon from "../assets/icons/codesandbox.svg";
 import { Links } from "../utils/Links";
 import Navlinks from "./Navlinks";
 import { SidebarWrapper } from "../assets/styled-components/SidebarWrapper";

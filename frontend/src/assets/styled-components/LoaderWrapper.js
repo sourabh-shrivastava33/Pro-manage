@@ -13,8 +13,8 @@ export const LoaderWrapper = styled.div`
   .loader {
     width: 5rem;
     height: 5rem;
-    border: 5px solid rgb(238, 242, 245);
-    border-top-color: rgb(24, 176, 255);
+    border: 5px solid var(--primary-300);
+    border-top-color: var(--primary-500);
     border-radius: 50%;
     animation: spinner 0.6s linear infinite;
   }

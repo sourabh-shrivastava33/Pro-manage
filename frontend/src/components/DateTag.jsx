@@ -1,7 +1,7 @@
 import { DateTagWrapper } from "../assets/styled-components/DateTagWrapper";
 import { dueDateExceeded, formatedDate } from "../utils/calculate";
 
-const DateTag = ({ date, status, share }) => {
+const DateTag = ({ date, status, share, publicPage }) => {
   return (
     <DateTagWrapper
       className={`date ${
@@ -12,6 +12,7 @@ const DateTag = ({ date, status, share }) => {
           : "done"
       }`}
       $share={share}
+      $public={publicPage}
     >
       {formatedDate(date, "MMM D")}
     </DateTagWrapper>

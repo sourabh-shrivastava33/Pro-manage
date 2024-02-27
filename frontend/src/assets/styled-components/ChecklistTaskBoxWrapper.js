@@ -27,9 +27,20 @@ export const ChecklistTaskBoxWrapper = styled.div`
   .task {
     color: #000;
     font-weight: 500;
+    overflow-x: scroll;
+    padding-bottom: 0;
+    &::-webkit-scrollbar {
+      height: 0.4rem;
+      margin-top: 0.4rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+
+      background-color: rgb(226, 226, 226);
+    }
   }
   .delete {
     font-size: 1.3rem;
-    color: rgb(207, 54, 54);
+    color: var(--red);
   }
 `;

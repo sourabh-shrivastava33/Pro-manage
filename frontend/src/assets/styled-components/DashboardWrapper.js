@@ -12,7 +12,7 @@ export const DashboardWrapper = styled.section`
   }
   .dashboard-header {
     span {
-      color: gray;
+      color: rgb(128, 128, 128);
     }
   }
   .title-filter-container {
@@ -36,6 +36,12 @@ export const DashboardWrapper = styled.section`
     font-weight: 600;
     letter-spacing: 0.8px;
     text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    span {
+      color: var(--black);
+    }
   }
   .kanban {
     overflow-x: scroll;

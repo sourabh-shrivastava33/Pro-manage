@@ -8,6 +8,7 @@ export const SharePageWrapper = styled.section`
     display: flex;
     align-items: center;
     padding: 0 4rem;
+    margin-bottom: 1.5rem;
   }
   .title {
     font-size: 1.8rem;
@@ -30,7 +31,7 @@ export const SharePageWrapper = styled.section`
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 12px;
-      background-color: rgb(156, 183, 197);
+      background-color: var(--primary-400);
     }
   }
   .checklist-detail {
@@ -52,6 +53,7 @@ export const SharePageWrapper = styled.section`
     .header {
       font-size: 1.4rem;
       padding: 0 2rem;
+      margin-bottom: 1rem;
     }
     .title {
       font-size: 1.5rem;

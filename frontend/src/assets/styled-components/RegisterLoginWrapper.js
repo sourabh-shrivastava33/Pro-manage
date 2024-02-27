@@ -11,7 +11,7 @@ export const RegisterLoginWrapper = styled.div`
     width: 60dvw;
     height: 100vh;
     max-height: 100vh;
-    background-color: #17a2b8;
+    background-color: var(--primary-500);
   }
   .welcome {
     display: flex;
@@ -50,7 +50,7 @@ export const RegisterLoginWrapper = styled.div`
     transform: translate(51.1%, -64%);
     height: 16vw;
     border-radius: 50%;
-    background-color: #268d9d;
+    background-color: var(--primary-600);
   }
   .banner-image {
     width: 80%;

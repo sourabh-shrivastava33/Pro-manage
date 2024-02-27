@@ -12,11 +12,11 @@ export const FormRow = styled.div`
   }
   .error {
     font-size: 0.8rem;
-    color: rgb(207, 54, 54);
+    color: var(--red);
     margin-top: 0.4rem;
   }
   .invalid-input {
-    border: 1px solid rgb(207, 54, 54);
+    border: 1px solid var(--red);
   }
   .label {
     display: flex;

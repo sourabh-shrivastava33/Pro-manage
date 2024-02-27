@@ -18,16 +18,10 @@ const withValidationErrors = (validateValues) => {
           .array()
           .map((error) => error.msg)
           .join(",");
-        // console.log(errors.split(",").join(",").startsWith("no task"));
-        console.log(result);
 
         if (
-          errors.split(",").join(",").startsWith("no task") ||
-          errors
-            .split(",")
-            .join(",")
-            .startsWith("no task")
-            .startsWith("no checklist")
+          errors?.split(",")?.join(",")?.includes("no task") ||
+          errors?.split(",")?.join(",")?.includes?.("no checklist")
         ) {
           throw new NotFoundError(errors);
         } else if (errors.split(",").join(",").startsWith("You are")) {
@@ -67,8 +61,9 @@ const taskInputValidation = withValidationErrors([
       return true;
     }),
 ]);
-// I cannot use taskInputValidation for edit task as i am send patch request to the edit route which
+// I cannot use taskInputValidation for edit task as i will send patch request to the edit route which
 //  means i don't need to send all fields to edit only field which required updation is send to edit route
+// Basically for status mutation now
 const taskEditValidation = withValidationErrors([
   body("title").optional().notEmpty().withMessage("title cannot be empty"),
   body("priority")
@@ -131,11 +126,7 @@ const validateParamsId = withValidationErrors([
       if (!isValidId) throw new Error(`checklist id is invalid mongodb id`);
       const { taskId } = req.params;
       const task = await TaskModel.findById(taskId);
-      // const isOwner = task.createdBy === req.user._id.toString();
-      // if (!isOwner)
-      //   throw new UnAuthorizedError(
-      //     "You are not authorized to mutate this task"
-      //   );
+
       const requiredChecklist = task?.checklist.some(
         (checklist) => checklist._id.toString() === value
       );
@@ -186,16 +177,10 @@ const validateLoginInput = withValidationErrors([
   body("email")
     .notEmpty()
     .withMessage("This field is required")
-    .custom(async (value, { req }) => {
-      const user = await UserModel.findOne({ email: value });
-    }),
+    .isEmail()
+    .withMessage("Invalid email format"),
 
-  body("password")
-    .notEmpty()
-    .withMessage("This field is required")
-    .custom(async (value, { req }) => {
-      const user = await UserModel.findOne({ email: req.body.email });
-    }),
+  body("password").notEmpty().withMessage("This field is required"),
 ]);
 
 const validateUpdateUserInput = withValidationErrors([

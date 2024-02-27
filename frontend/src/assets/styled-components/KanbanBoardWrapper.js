@@ -13,7 +13,7 @@ export const KanbanBoardWrapper = styled.div`
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: rgb(156, 183, 197);
+      background-color: var(--primary-400);
       border-radius: 20px;
     }
   }

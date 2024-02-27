@@ -71,13 +71,13 @@ export const CreateEditContainerWrapper = styled.div`
     height: 10px;
   }
   .high {
-    background-color: rgb(207, 54, 54);
+    background-color: var(--red);
   }
   .low {
     background-color: rgb(99, 192, 91);
   }
   .moderate {
-    background-color: rgb(24, 176, 255);
+    background-color: var(--blue);
   }
   .checklist-detail {
     margin: 1.4rem 0 0.4rem 0;
@@ -93,7 +93,7 @@ export const CreateEditContainerWrapper = styled.div`
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      background-color: rgb(156, 183, 197);
+      background-color: var(--primary-400);
     }
   }
   .add-checklist {
@@ -128,14 +128,14 @@ export const CreateEditContainerWrapper = styled.div`
     color: rgb(118, 117, 117);
   }
   .cancel-btn {
-    border: 1.3px solid rgb(207, 54, 54);
-    background-color: rgb(207, 54, 54);
-    color: rgb(255, 255, 255);
+    border: 1.3px solid var(--red);
+    background-color: var(--red);
+    color: var(--white);
   }
   .save-btn {
-    border: 1.3px solid rgb(24, 176, 255);
-    color: rgb(255, 255, 255);
-    background-color: rgb(24, 176, 255);
+    border: 1.3px solid var(--primary-500);
+    color: var(--white);
+    background-color: var(--primary-500);
   }
   .cancel-save-btns {
     display: flex;

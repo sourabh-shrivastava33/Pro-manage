@@ -9,11 +9,7 @@ import { TaskCardWrapper } from "../assets/styled-components/TaskCardWrapper";
 import ConfirmationWindow from "./ConfirmationWindow";
 import Menus from "./Menu";
 import Modal from "./Modal";
-import {
-  completedTask,
-  dueDateExceeded,
-  formatedDate,
-} from "../utils/calculate";
+import { completedTask } from "../utils/calculate";
 import toast from "react-hot-toast";
 import CreateEditTask from "../components/CreateEditTask";
 import {
@@ -30,7 +26,6 @@ const TaskCard = ({
   expandedChecklistsId,
   setExpandedChecklistsId,
 }) => {
-  console.log(ele);
   const doneTask = completedTask(ele?.checklist);
   const totalTask = ele.checklist.length;
   const expanded = expandedChecklistsId?.includes(ele.id);
@@ -58,20 +53,19 @@ const TaskCard = ({
     }
   };
 
-  const handleDoneChange = () => {
-    toast.error("Make changes from Edit Modal");
-    // const taskId = ele.id;
-    // const checkListStatus = { done: e.target.checked };
-    // try {
-    //   await editChecklistByTaskAndChecklistId({
-    //     taskId,
-    //     checkListStatus,
-    //     checklistId,
-    //   }).unwrap();
-    //   toast.success("Task updated");
-    // } catch (error) {
-    //   toast.error(error?.data?.message);
-    // }
+  const handleDoneChange = async (checklistId, e) => {
+    const taskId = ele.id;
+    const checkListStatus = { done: e.target.checked };
+    try {
+      await editChecklistByTaskAndChecklistId({
+        taskId,
+        checkListStatus,
+        checklistId,
+      }).unwrap();
+      toast.success("Task updated");
+    } catch (error) {
+      toast.error(error?.data?.message);
+    }
   };
   const returnShareLink = (id) => {
     return `${window.location.href.split("/home")[0]}/share/${id}`;

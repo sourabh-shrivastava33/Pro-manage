@@ -11,20 +11,18 @@ const App = () => {
             width: "auto",
             border: "1px solid #17a2b8",
             padding: "16px",
-            color: "rgb(0,0,0)",
+            color: "var(--black)",
             backgroundColor: "rgb(249, 252, 255)",
             fontSize: "1rem",
           },
           error: {
             style: {
-              color: "rgb(207, 54, 54)",
-              border: "1px solid rgb(207, 54, 54)",
+              border: "1px solid var(--red)",
             },
           },
           success: {
             style: {
-              color: "rgb(99, 192, 91)",
-              border: "1px solid rgb(99, 192, 91)",
+              border: "1px solid var(--green)",
             },
           },
         }}

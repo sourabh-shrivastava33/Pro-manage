@@ -25,7 +25,9 @@ const DashboardPage = () => {
   return (
     <DashboardWrapper>
       <div className="dashboard-header">
-        <h3 className="greet-user">{`Welcome! ${user.name}`}</h3>
+        <h3 className="greet-user">
+          <span>Welcome!</span> <span>{`${user.name}`}</span>
+        </h3>
         <span>{formatedDate(Date.now(), "D MMM,YYYY")}</span>
       </div>
       <div className="title-filter-container">
