@@ -129,8 +129,8 @@ export const CreateEditContainerWrapper = styled.div`
   }
   .cancel-btn {
     border: 1.3px solid var(--red);
-    background-color: var(--red);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--red);
   }
   .save-btn {
     border: 1.3px solid var(--primary-500);
