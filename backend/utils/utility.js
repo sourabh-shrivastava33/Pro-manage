@@ -13,12 +13,7 @@ export const taskStatus = {
   DONE: "Done",
 };
 export const formatDate = (date) => {
-  return dayjs
-    .utc(date, "MM-DD-YYYY")
-    .endOf("day")
-    .add("12", "hour")
-    .add(1, "second")
-    .toDate();
+  return dayjs.utc(date, "MM-DD-YYYY").startOf("day").toDate();
 };
 export const calculateDateRange = (range) => {
   let startDate;

@@ -130,6 +130,8 @@ const createTask = async (req, res) => {
   } else {
     newTask = { ...req.body };
   }
+  console.log(req.body?.["due date"]);
+  console.log(formatDate(req.body?.["due date"]));
   newTask.createdBy = req.user._id;
   const task = await TaskModel.create(newTask);
   res.status(StatusCodes.CREATED).json({ task });
