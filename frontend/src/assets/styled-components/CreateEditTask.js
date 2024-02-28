@@ -3,7 +3,7 @@ export const CreateEditContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 35vw;
+  width: 650px;
   height: 500px;
   .title-box {
     display: flex;
