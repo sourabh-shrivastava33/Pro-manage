@@ -11,6 +11,7 @@ export const ChecklistTaskBoxWrapper = styled.div`
   .checkbox {
     min-width: 15px;
     min-height: 15px;
+    accent-color: var(--primary-500);
   }
   .task-input {
     width: 100%;

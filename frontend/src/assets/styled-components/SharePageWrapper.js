@@ -13,6 +13,9 @@ export const SharePageWrapper = styled.section`
   .title {
     font-size: 1.8rem;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin: 0.8rem 0 2rem 0;
   }
   .task-container {

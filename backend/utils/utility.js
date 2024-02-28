@@ -1,5 +1,8 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc.js";
+import isSameorAfter from "dayjs/plugin/isSameOrAfter.js";
+import isToday from "dayjs/plugin/isToday.js";
+dayjs.extend(isSameorAfter);
 dayjs.extend(utc);
 import dotenv from "dotenv";
 dotenv.config();
@@ -14,6 +17,10 @@ export const taskStatus = {
 };
 export const formatDate = (date) => {
   return dayjs.utc(date, "MM-DD-YYYY").startOf("day").toDate();
+};
+export const dueDateNotExceeded = (date) => {
+  if (new Date(date).getDate() === new Date(Date.now()).getDate()) return true;
+  return dayjs(formatDate(date)).isSameOrAfter(formatDate(Date.now()), "day");
 };
 export const calculateDateRange = (range) => {
   let startDate;

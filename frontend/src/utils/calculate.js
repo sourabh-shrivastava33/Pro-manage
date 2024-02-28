@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import isSameorAfter from "dayjs/plugin/isSameOrAfter";
 import utc from "dayjs/plugin/utc";
+import isSameorAfter from "dayjs/plugin/isSameOrAfter";
 
+dayjs.extend(isSameorAfter);
 dayjs.extend(utc);
 dayjs.extend(customParseFormat);
-dayjs.extend(isSameorAfter);
 
 export const formatedDate = (date, format) => {
   return dayjs(date).startOf("day").hour(12).format(format);

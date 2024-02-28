@@ -2,6 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import TaskModel from "../models/taskModel.js";
 import {
   calculateDateRange,
+  dueDateNotExceeded,
   formatDate,
   taskStatus,
 } from "../utils/utility.js";
@@ -130,8 +131,6 @@ const createTask = async (req, res) => {
   } else {
     newTask = { ...req.body };
   }
-  console.log(req.body?.["due date"]);
-  console.log(formatDate(req.body?.["due date"]));
   newTask.createdBy = req.user._id;
   const task = await TaskModel.create(newTask);
   res.status(StatusCodes.CREATED).json({ task });
@@ -145,7 +144,6 @@ const getAnalytics = async (req, res) => {
   const statusWiseAnalyitcs = tasks.reduce(
     (acc, task) => {
       let status = task.status;
-
       if (acc.hasOwnProperty(status)) {
         acc[status]++;
       } else {
@@ -162,6 +160,7 @@ const getAnalytics = async (req, res) => {
   );
   const priorityWiseAnalytics = tasks.reduce(
     (acc, task) => {
+      if (task.status === "Done") return acc;
       const priority = task.priority;
       if (acc.hasOwnProperty(priority)) {
         acc[priority]++;
@@ -177,11 +176,19 @@ const getAnalytics = async (req, res) => {
     }
   );
   const notCompletedTasksWithDueDateAnalytics = tasks.reduce((acc, task) => {
-    if (task["due date"] && task.status === "Done") {
+    if (
+      (task["due date"] && task.status === "Done") ||
+      (task["due date"] &&
+        task.status !== "Done" &&
+        !dueDateNotExceeded(task["due date"])) ||
+      !task["due date"]
+    )
       return acc;
-    } else if (!task["due date"]) {
-      return acc;
-    } else if (task["due date"] && task.status !== "Done") {
+    if (
+      task["due date"] &&
+      task.status !== "Done" &&
+      dueDateNotExceeded(task["due date"])
+    ) {
       return acc + 1;
     }
   }, 0);

@@ -76,7 +76,7 @@ export const TaskCardWrapper = styled.aside`
     color: rgb(118, 117, 117);
     background-color: rgb(219, 219, 219);
     font-weight: 600;
-    border-radius: 15px;
+    border-radius: 6px;
     border: transparent;
     cursor: pointer;
   }
