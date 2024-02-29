@@ -7,14 +7,18 @@ import { useGetAllTaskQuery } from "../slices/taskApiSlice";
 import Loader from "./Loader";
 const KanbanBoard = ({ filterBy }) => {
   const queryParams = { filter: filterBy };
-  const { data: tasks, isLoading } = useGetAllTaskQuery(queryParams);
+  const {
+    data: tasks,
+    isLoading,
+    isFetching,
+  } = useGetAllTaskQuery(queryParams);
   let data = tasks?.manipulatedTaskObj;
-
+  console.log(isFetching);
   return (
     <Menus>
       <KanbanBoardWrapper>
         <div className="kanban-container">
-          {isLoading ? (
+          {isLoading || isFetching ? (
             <Loader />
           ) : (
             swimlanes.map((lane) => (

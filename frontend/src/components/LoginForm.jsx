@@ -9,13 +9,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLoginMutation } from "../slices/authApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import toast from "react-hot-toast";
+import Loader from "./Loader";
 const LoginForm = () => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [login, { isLoading }] = useLoginMutation();
   const { formState, register, handleSubmit } = useForm();
-
+  console.log(isLoading);
   const onSubmit = async (data) => {
     try {
       const res = await login(data).unwrap();
@@ -72,7 +73,7 @@ const LoginForm = () => {
         />
 
         <button type="submit" className="btn" disabled={isLoading}>
-          Log in
+          {isLoading ? <Loader loginRegister /> : "Log in"}
         </button>
       </form>
       <p>Have no Account yet?</p>

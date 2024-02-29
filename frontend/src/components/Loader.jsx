@@ -1,8 +1,8 @@
 import { LoaderWrapper } from "../assets/styled-components/LoaderWrapper";
 
-const Loader = () => {
+const Loader = ({ loginRegister }) => {
   return (
-    <LoaderWrapper>
+    <LoaderWrapper $loginRegister={loginRegister}>
       <div className="loader"></div>
     </LoaderWrapper>
   );

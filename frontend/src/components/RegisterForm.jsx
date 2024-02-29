@@ -11,6 +11,7 @@ import { useSignUpMutation } from "../slices/authApiSlice";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { setCredentials } from "../slices/authSlice";
+import Loader from "./Loader";
 const RegisterForm = () => {
   const { formState, register, getValues, handleSubmit } = useForm();
   const { user } = useSelector((state) => state.user);
@@ -97,7 +98,7 @@ const RegisterForm = () => {
         />
 
         <button type="submit" className="btn" disabled={isLoading}>
-          Register
+          {isLoading ? <Loader loginRegister /> : "Log in"}
         </button>
       </form>
       <p>Have an Account</p>
