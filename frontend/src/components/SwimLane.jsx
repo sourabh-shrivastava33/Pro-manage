@@ -1,39 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { VscCollapseAll } from "react-icons/vsc";
 import { IoAdd } from "react-icons/io5";
 import TaskCard from "./TaskCard";
 import { SwinLaneWrapper } from "../assets/styled-components/SwinLaneWrapper";
 import Modal from "./Modal";
 import CreateEditTask from "./CreateEditTask";
+import useLocalStorageState from "../hooks/useLocalStorageState";
 
 const SwimLane = ({ title, data }) => {
-  const [expandedChecklistsId, setExpandedChecklistsId] = useState(() =>
-    localStorage.getItem(`expandedChecklistId:${title}`)
-      ? JSON.parse(localStorage.getItem(`expandedChecklistId:${title}`))
-      : []
+  const [value, setValue] = useLocalStorageState(
+    [],
+    `expandedChecklistId:${title}`
   );
+
+  const [expandedChecklistsId, setExpandedChecklistsId] = useState(value);
   const toggleCollapseMode = (id) => {
     setExpandedChecklistsId((prev) => {
       if (prev.includes(id)) {
-        localStorage.setItem(
-          `expandedChecklistId:${title}`,
-          JSON.stringify(prev.filter((taskId) => taskId !== id))
-        );
         return prev.filter((taskId) => taskId !== id);
       } else {
-        localStorage.setItem(
-          `expandedChecklistId:${title}`,
-          JSON.stringify([...prev, id])
-        );
         return [...prev, id];
       }
     });
   };
   const collapseAll = () => {
-    localStorage.removeItem(`expandedChecklistId:${title}`);
     setExpandedChecklistsId([]);
   };
-
+  useEffect(() => {
+    setValue(expandedChecklistsId);
+  }, [setValue, expandedChecklistsId]);
   return (
     <SwinLaneWrapper>
       <div className="swinlane-head">

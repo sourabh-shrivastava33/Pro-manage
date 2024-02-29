@@ -52,7 +52,10 @@ const TaskCard = ({
             expandedChecklistsId.filter((checklistId) => checklistId !== ele.id)
           )
         );
-        expandedChecklistsId.filter((checklistId) => checklistId !== ele.id);
+
+        return expandedChecklistsId.filter(
+          (checklistId) => checklistId !== ele.id
+        );
       });
     } catch (error) {
       toast.error(error?.data?.message);

@@ -13,7 +13,6 @@ const KanbanBoard = ({ filterBy }) => {
     isFetching,
   } = useGetAllTaskQuery(queryParams);
   let data = tasks?.manipulatedTaskObj;
-  console.log(isFetching);
   return (
     <Menus>
       <KanbanBoardWrapper>
