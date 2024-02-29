@@ -7,17 +7,30 @@ import Modal from "./Modal";
 import CreateEditTask from "./CreateEditTask";
 
 const SwimLane = ({ title, data }) => {
-  const [expandedChecklistsId, setExpandedChecklistsId] = useState([]);
+  const [expandedChecklistsId, setExpandedChecklistsId] = useState(() =>
+    localStorage.getItem(`expandedChecklistId:${title}`)
+      ? JSON.parse(localStorage.getItem(`expandedChecklistId:${title}`))
+      : []
+  );
   const toggleCollapseMode = (id) => {
     setExpandedChecklistsId((prev) => {
       if (prev.includes(id)) {
+        localStorage.setItem(
+          `expandedChecklistId:${title}`,
+          JSON.stringify(prev.filter((taskId) => taskId !== id))
+        );
         return prev.filter((taskId) => taskId !== id);
       } else {
+        localStorage.setItem(
+          `expandedChecklistId:${title}`,
+          JSON.stringify([...prev, id])
+        );
         return [...prev, id];
       }
     });
   };
   const collapseAll = () => {
+    localStorage.removeItem(`expandedChecklistId:${title}`);
     setExpandedChecklistsId([]);
   };
 
