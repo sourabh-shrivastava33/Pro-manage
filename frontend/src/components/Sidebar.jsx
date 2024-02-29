@@ -6,7 +6,7 @@ import logoutIcon from "../assets/icons/Logout.svg";
 import Modal from "./Modal";
 import ConfirmationWindow from "./ConfirmationWindow";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { useLogoutMutation } from "../slices/authApiSlice";
 import { logout as deleteCredentials } from "../slices/authSlice";
 import toast from "react-hot-toast";

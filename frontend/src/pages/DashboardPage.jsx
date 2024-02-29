@@ -3,25 +3,27 @@ import { DashboardWrapper } from "../assets/styled-components/DashboardWrapper";
 import KanbanBoard from "../components/KanbanBoard";
 import { formatedDate } from "../utils/calculate";
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 const DashboardPage = () => {
-  const { search, pathname } = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const filterValue = queryParams.get("filter");
+  const { daysFilter, setDayFilter, search, pathname } = useOutletContext();
+
+  // const { search, pathname } = useLocation();
+  // const queryParams = new URLSearchParams(location.search);
+  // const filterValue = queryParams.get("filter");
   const navigate = useNavigate();
-  const [filterBy, setFilterBy] = useState(() =>
-    filterValue ? filterValue : "week"
-  );
+  // const [filterBy, setFilterBy] = useState(() =>
+  //   daysFilter ? daysFilter : "week"
+  // );
   const onChange = (e) => {
-    setFilterBy(e.target.value);
+    setDayFilter(e.target.value);
     const searchParams = new URLSearchParams(search);
     searchParams.set("filter", e.target.value);
     navigate(`${pathname}?${searchParams}`);
   };
   const { user } = useSelector((state) => state.user);
   useEffect(() => {
-    if (!filterValue) setFilterBy("week");
-  }, [filterValue]);
+    if (!daysFilter) setDayFilter("week");
+  }, [daysFilter, setDayFilter]);
   return (
     <DashboardWrapper>
       <div className="dashboard-header">
@@ -35,7 +37,7 @@ const DashboardPage = () => {
         <select
           name="filter"
           id="filter"
-          value={filterBy}
+          value={daysFilter}
           className="select-filter"
           onChange={onChange}
         >
@@ -45,7 +47,7 @@ const DashboardPage = () => {
         </select>
       </div>
 
-      <KanbanBoard filterBy={filterBy} />
+      <KanbanBoard />
     </DashboardWrapper>
   );
 };

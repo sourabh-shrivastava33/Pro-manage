@@ -5,8 +5,11 @@ import { KanbanBoardWrapper } from "../assets/styled-components/KanbanBoardWrapp
 import Menus from "./Menu";
 import { useGetAllTaskQuery } from "../slices/taskApiSlice";
 import Loader from "./Loader";
-const KanbanBoard = ({ filterBy }) => {
-  const queryParams = { filter: filterBy };
+import { useOutletContext } from "react-router-dom";
+const KanbanBoard = () => {
+  const { daysFilter } = useOutletContext();
+
+  const queryParams = { filter: daysFilter };
   const {
     data: tasks,
     isLoading,
