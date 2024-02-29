@@ -6,7 +6,7 @@ const Logo = ({ sharepage }) => {
   return (
     <LogoWrapper $sharepage={sharepage}>
       <img src={codesandboxIcon} alt="logo" />
-      <p className="company-name">Pro Manager</p>
+      <p className="company-name">Pro Manage</p>
     </LogoWrapper>
   );
 };
