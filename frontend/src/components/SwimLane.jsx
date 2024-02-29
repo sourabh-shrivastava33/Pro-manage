@@ -6,8 +6,9 @@ import { SwinLaneWrapper } from "../assets/styled-components/SwinLaneWrapper";
 import Modal from "./Modal";
 import CreateEditTask from "./CreateEditTask";
 import useLocalStorageState from "../hooks/useLocalStorageState";
+import CardShimmer from "./CardShimmer";
 
-const SwimLane = ({ title, data }) => {
+const SwimLane = ({ title, data, isFetching }) => {
   const [value, setValue] = useLocalStorageState(
     [],
     `expandedChecklistId:${title}`
@@ -48,16 +49,20 @@ const SwimLane = ({ title, data }) => {
         </span>
       </div>
       <div className="task-card">
-        {data?.map((ele) => (
-          <TaskCard
-            ele={ele}
-            key={ele.id}
-            title={title}
-            toggleCollapseMode={toggleCollapseMode}
-            expandedChecklistsId={expandedChecklistsId}
-            setExpandedChecklistsId={setExpandedChecklistsId}
-          />
-        ))}
+        {data?.map((ele) => {
+          return isFetching ? (
+            <CardShimmer key={ele.id} />
+          ) : (
+            <TaskCard
+              ele={ele}
+              key={ele.id}
+              title={title}
+              toggleCollapseMode={toggleCollapseMode}
+              expandedChecklistsId={expandedChecklistsId}
+              setExpandedChecklistsId={setExpandedChecklistsId}
+            />
+          );
+        })}
       </div>
     </SwinLaneWrapper>
   );

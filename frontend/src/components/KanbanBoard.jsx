@@ -17,7 +17,7 @@ const KanbanBoard = ({ filterBy }) => {
     <Menus>
       <KanbanBoardWrapper>
         <div className="kanban-container">
-          {isLoading || isFetching ? (
+          {isLoading ? (
             <Loader />
           ) : (
             swimlanes.map((lane) => (
@@ -25,6 +25,7 @@ const KanbanBoard = ({ filterBy }) => {
                 title={lane.title}
                 data={data[lane.title]}
                 key={lane.title}
+                isFetching={isFetching}
               />
             ))
           )}

@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const FormWrapper = styled.section`
   width: 60%;
-  margin: ${(props) => (props.$settings ? "3rem 2rem" : "0 auto")};
+  margin: ${(props) => (props.$settings ? "2rem" : "0 auto")};
   min-height: 35rem;
   .head {
     text-align: ${(props) => (props.$settings ? "" : "center")};
-    font-size: ${(props) => (props.$settings ? "1.8rem" : "1.5rem")};
+    font-size: ${(props) => (props.$settings ? "2.1rem" : "1.5rem")};
     font-weight: 500;
     margin-bottom: 4rem;
   }
