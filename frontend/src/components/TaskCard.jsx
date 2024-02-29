@@ -45,9 +45,15 @@ const TaskCard = ({
       // to remove its state of expanded on mutating status so that when it
       // comes backs to same lane chekclist will not be expanded already
       toast.success("Status updated");
-      setExpandedChecklistsId(
-        expandedChecklistsId.filter((checklistId) => checklistId !== ele.id)
-      );
+      setExpandedChecklistsId(() => {
+        localStorage.setItem(
+          `expandedChecklistId:${title}`,
+          JSON.stringify(
+            expandedChecklistsId.filter((checklistId) => checklistId !== ele.id)
+          )
+        );
+        expandedChecklistsId.filter((checklistId) => checklistId !== ele.id);
+      });
     } catch (error) {
       toast.error(error?.data?.message);
     }
