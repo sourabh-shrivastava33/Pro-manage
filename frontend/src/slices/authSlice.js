@@ -14,7 +14,8 @@ const authSlice = createSlice({
     },
     logout: (state, action) => {
       state.user = null;
-      localStorage.removeItem("user");
+      //Note: as i have to remove the collapsed checklist state also
+      localStorage.clear();
     },
   },
 });

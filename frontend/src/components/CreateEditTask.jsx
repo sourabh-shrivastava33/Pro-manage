@@ -11,6 +11,12 @@ import {
   useEditTaskMutation,
 } from "../slices/taskApiSlice";
 const CreateEditTask = ({ onCloseModal, taskToEdit }) => {
+  const initialErrorState = {
+    title: "",
+    priority: "",
+    checklistArr: "",
+    checklistEmpty: "",
+  };
   const [title, setTitle] = useState(() => {
     return taskToEdit ? taskToEdit.title : "";
   });
@@ -25,7 +31,7 @@ const CreateEditTask = ({ onCloseModal, taskToEdit }) => {
       ? formatedDate(taskToEdit["due date"], "MM-DD-YYYY")
       : null;
   });
-
+  const [error, setError] = useState(initialErrorState);
   const [showCalendar, setShowCalendar] = useState(false);
   const addTaskContainerRef = useRef(null);
   const totalChecklist = checkLists.length;
@@ -81,12 +87,37 @@ const CreateEditTask = ({ onCloseModal, taskToEdit }) => {
   };
 
   const onCreateEdit = async () => {
-    if (!title) return toast.error("Title is required");
-    if (!taskPriority) return toast.error("Priority is required");
-    if (checkLists.length === 0)
+    if (!title) {
+      setError({ ...initialErrorState, title: "Title is required" });
+      return toast.error("Title is required");
+    } else {
+      setError(initialErrorState);
+    }
+    if (!taskPriority) {
+      setError({ ...initialErrorState, priority: "Priority is required" });
+      return toast.error("Priority is required");
+    } else {
+      setError(initialErrorState);
+    }
+    if (checkLists.length === 0) {
+      setError({
+        ...initialErrorState,
+        checklistArr: "Create atleast one subtask",
+      });
       return toast.error("To create task at least one sub task is required");
-    if (checkLists.some((checklist) => checklist.task === ""))
+    } else {
+      setError(initialErrorState);
+    }
+
+    if (checkLists.some((checklist) => checklist.task === "")) {
+      setError({
+        ...initialErrorState,
+        checklistEmpty: "Checklist task cannot be empty",
+      });
       return toast.error("Checklist cannot be empty");
+    } else {
+      setError(initialErrorState);
+    }
 
     let Task = {
       title,
@@ -120,6 +151,7 @@ const CreateEditTask = ({ onCloseModal, taskToEdit }) => {
       }
     }
   };
+  console.log(error);
   return (
     <CreateEditContainerWrapper>
       <div className="contents">
@@ -134,37 +166,41 @@ const CreateEditTask = ({ onCloseModal, taskToEdit }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          {error.title && <p className="error">{error.title}</p>}
         </div>
         <div className="select-priority-box">
-          <p className="select-label">
-            Select Priority
-            <span className="asteric">*</span>
-          </p>
-          <div className="priority-btns-container">
-            {priorities.map((priority) => {
-              return (
-                <button
-                  id={`${priority}`}
-                  className={
-                    taskPriority === priority
-                      ? "priority-btn active"
-                      : "priority-btn"
-                  }
-                  key={priority}
-                  onClick={() => setTaskPriority(priority)}
-                >
-                  <span className={`${priority}`}></span>
-                  <span>{priority} priority</span>
-                </button>
-              );
-            })}
+          <div className="priority-btn-flex">
+            <p className="select-label">
+              Select Priority
+              <span className="asteric">*</span>
+            </p>
+            <div className="priority-btns-container">
+              {priorities.map((priority) => {
+                return (
+                  <button
+                    id={`${priority}`}
+                    className={
+                      taskPriority === priority
+                        ? "priority-btn active"
+                        : "priority-btn"
+                    }
+                    key={priority}
+                    onClick={() => setTaskPriority(priority)}
+                  >
+                    <span className={`${priority}`}></span>
+                    <span>{priority} priority</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
+          {error.priority && <p className="error">{error.priority}</p>}
         </div>
         <p className="checklist-detail">
           Checklist (<span>{completedChecklist}</span>/
           <span>{totalChecklist}</span>)<span className="asteric">*</span>
         </p>
-
+        {error.checklistArr && <p className="error">{error.checklistArr}</p>}
         {totalChecklist > 0 && (
           <div className="checklist-container" ref={addTaskContainerRef}>
             {checkLists.map((checkList) => (
@@ -180,6 +216,9 @@ const CreateEditTask = ({ onCloseModal, taskToEdit }) => {
           </div>
         )}
 
+        {error.checklistEmpty && (
+          <p className="error">{error.checklistEmpty}</p>
+        )}
         <button className="add-checklist" onClick={handleAddChecklist}>
           + Add
         </button>

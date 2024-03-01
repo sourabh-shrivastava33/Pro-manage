@@ -38,9 +38,17 @@ export const CreateEditContainerWrapper = styled.div`
   }
   .select-priority-box {
     margin-top: 1.5rem;
+  }
+  .priority-btn-flex {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  .error {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--red);
+    margin-top: 0.8rem;
   }
   .priority-btns-container {
     display: flex;
