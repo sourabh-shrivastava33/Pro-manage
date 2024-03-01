@@ -151,7 +151,7 @@ const CreateEditTask = ({ onCloseModal, taskToEdit }) => {
       }
     }
   };
-  console.log(error);
+
   return (
     <CreateEditContainerWrapper>
       <div className="contents">
