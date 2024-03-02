@@ -98,7 +98,7 @@ const RegisterForm = () => {
         />
 
         <button type="submit" className="btn" disabled={isLoading}>
-          {isLoading ? <Loader loginRegister /> : "Log in"}
+          {isLoading ? <Loader loginRegister /> : "Register"}
         </button>
       </form>
       <p>Have an Account</p>
